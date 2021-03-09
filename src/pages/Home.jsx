@@ -1,10 +1,21 @@
-import { Footer } from "../components/Footer";
-import { Header } from "../components/Header";
+import {
+  HomeContainer,
+  ImageContainer,
+  IntroductionContainer,
+} from "../styles/Home.style";
 
 export const Home = () => {
   return (
     <>
-      <h1 style={{ "margin-top": "10rem" }}>Home</h1>
+      <HomeContainer>
+        <IntroductionContainer>
+          <h1>The best recipes are just a click away</h1>
+          <h2>Come see for yourself!</h2>
+        </IntroductionContainer>
+        <ImageContainer>
+          <img src="images/homeImage.svg" alt="Hat Chef" />
+        </ImageContainer>
+      </HomeContainer>
     </>
   );
 };
