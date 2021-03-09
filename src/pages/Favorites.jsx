@@ -1,3 +1,3 @@
 export const Favorites = () => {
-  return <h1>Favorites</h1>;
+  return <h1 style={{ "margin-top": "10rem" }}>Favorites</h1>;
 };

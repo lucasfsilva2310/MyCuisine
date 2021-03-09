@@ -30,11 +30,19 @@ export const NavigationContainer = styled.nav`
     border-top: 5px solid var(--text);
     border-radius: 2px;
     color: var(--text-hovered);
+    transition: all 0.2s;
   }
 
   @media (max-width: 935px) {
+    margin-right: 1rem;
+
     ul {
       justify-content: space-between;
+      font-size: 1.3rem;
     }
+  }
+
+  @media (max-width: 520px) {
+    display: none;
   }
 `;

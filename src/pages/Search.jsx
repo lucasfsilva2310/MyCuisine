@@ -1,3 +1,3 @@
 export const Search = () => {
-  return <h1>Search</h1>;
+  return <h1 style={{ "margin-top": "10rem" }}>Search</h1>;
 };

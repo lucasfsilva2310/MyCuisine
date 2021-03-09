@@ -39,4 +39,11 @@ export const LogoContainer = styled.div`
       height: 75%;
     }
   }
+
+  @media (max-width: 742px) {
+    width: 15%;
+    span {
+      display: none;
+    }
+  }
 `;
