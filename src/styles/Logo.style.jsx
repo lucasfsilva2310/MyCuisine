@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const LogoContainer = styled.div`
   width: 25%;
-  border: 1px solid red; // Retirar
 
   display: flex;
   align-items: center;
@@ -19,5 +18,25 @@ export const LogoContainer = styled.div`
     font-size: 2.5rem;
     font-family: Rosario;
     color: var(--title);
+  }
+
+  @media (max-width: 1040px) {
+    span {
+      font-size: 2.2rem;
+    }
+
+    img {
+      height: 85%;
+    }
+  }
+
+  @media (max-width: 800px) {
+    span {
+      font-size: 2rem;
+    }
+
+    img {
+      height: 75%;
+    }
   }
 `;
