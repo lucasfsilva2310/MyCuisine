@@ -28,7 +28,6 @@ export const Card = styled.div`
 
   font-family: Rosario;
 
-  overflow: hidden;
   color: var(--text);
   line-height: 1.5;
 
@@ -88,6 +87,27 @@ export const Card = styled.div`
     transition: transform 250ms ease, box-shadow 250ms ease;
   }
   footer > button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 34px 0 rgba(255, 79, 135, 0.32);
+  }
+`;
+
+export const ButtonAnimated = styled.button`
+  display: inline-block;
+  background-color: #ff4f87;
+  margin-top: 1rem;
+  padding: 0.7rem;
+  width: 100%;
+  text-align: center;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  color: var(--white);
+  letter-spacing: 0.2px;
+  font-size: 1rem;
+  transition: transform 250ms ease, box-shadow 250ms ease;
+
+  &:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 34px 0 rgba(255, 79, 135, 0.32);
   }

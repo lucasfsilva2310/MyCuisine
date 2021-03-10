@@ -9,7 +9,6 @@ export const ResultsProvider = ({ children }) => {
 
   const [valueInput, setValueInput] = useState("");
   const [recipesResult, setRecipesResult] = useState([]);
-  const [youtubeVideoId, setYoutubeVideoId] = useState("");
 
   function handleInputValue(ev) {
     let value = ev.target.value;
@@ -26,6 +25,9 @@ export const ResultsProvider = ({ children }) => {
         `https://api.edamam.com/search?q=${inputForRequest}&to=100&app_id=10531e7c&app_key=267283f1a3321a8d570fac0cf017d03e`
       )
       .then((response) => {
+        if (response.data.hits.length < 1) {
+          return;
+        }
         response.data.hits.forEach((recipe) => {
           recipes.push(recipe.recipe);
         });
@@ -42,42 +44,15 @@ export const ResultsProvider = ({ children }) => {
     }, 2000);
   }
 
-  function searchYoutubeIdAPI(input) {
-    let savedYoutubeId = "";
-    let inputForRequest = input.split(" ").join("+");
-
-    axios
-      .get(
-        `https://youtube.googleapis.com/youtube/v3/search?q=${inputForRequest}&type=video&videoDefinition=high&videoEmbeddable=true&maxResults=1&relevanceLanguage=en&key=AIzaSyCSOOzfIafqx5KVilmPA5yKF6vi1GroRvI`
-      )
-      .then((response) => {
-        savedYoutubeId = response.data.items[0].id.videoId;
-
-        setYoutubeVideoId(savedYoutubeId);
-      })
-      .catch((error) => {
-        console.log("Erro Requisição Youtube: ", error);
-        return;
-      });
-
-    // setTimeout(() => {
-    //   history.push("/");
-    //   history.push("/results");
-    // }, 2000);
-  }
-
   return (
     <ResultContext.Provider
       value={{
         handleInputValue,
         searchRecipesAPI,
-        searchYoutubeIdAPI,
         valueInput,
         setValueInput,
         recipesResult,
         setRecipesResult,
-        youtubeVideoId,
-        setYoutubeVideoId,
       }}
     >
       {children}

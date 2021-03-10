@@ -1,3 +1,25 @@
+import { useContext, useEffect } from "react";
+import { DescriptionCard } from "../components/DescriptionCard";
+import { TryAlsoCard } from "../components/TryAlsoCard";
+import { DescriptionContext } from "../contexts/DescriptionContext";
+import { DescriptionContainer } from "../styles/Description.style";
+
 export const Description = () => {
-  return <h1 style={{ "margin-top": "10rem" }}>Description</h1>;
+  const { tryAlso, recipeDescription } = useContext(DescriptionContext);
+
+  useEffect(() => {
+    document.body.style.cursor = "default";
+  }, []);
+
+  console.log("sugestoes: ", tryAlso);
+  console.log("descrição receita: ", recipeDescription);
+
+  return (
+    <>
+      <DescriptionContainer>
+        <DescriptionCard />
+        <TryAlsoCard />;
+      </DescriptionContainer>
+    </>
+  );
 };
