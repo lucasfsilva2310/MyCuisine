@@ -13,6 +13,11 @@
   --title: #4a3939;
   --header: #d9bdbd;
   --footer: #ecdede;
+  --number: rgb(233, 148, 162);
+}
+
+html {
+  background-color: var(--background);
 }
 
 @media (max-width: 1080px) {

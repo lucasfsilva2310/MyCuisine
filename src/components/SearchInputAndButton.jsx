@@ -18,7 +18,7 @@ export const SearchInputAndButton = () => {
         />
         <ButtonContainer>
           <button onClick={() => searchAPI(valueInput)}>
-            <i class="fa fa-search"></i>
+            <i class="fa fa-search" />
           </button>
         </ButtonContainer>
       </InputAndButtonContainer>

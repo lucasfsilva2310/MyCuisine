@@ -6,16 +6,8 @@ export const HomeContainer = styled.div`
   width: 100%;
 
   display: flex;
-  height: 53.5rem;
+  height: 48rem;
   background-color: var(--background);
-
-  @media (max-width: 1080px) {
-    height: 51.9rem;
-  }
-
-  @media (max-width: 720px) {
-    height: 56.3rem;
-  }
 `;
 
 export const IntroductionContainer = styled.div`

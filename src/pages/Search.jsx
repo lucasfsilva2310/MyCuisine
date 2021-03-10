@@ -1,9 +1,13 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
+import { RecipeCards } from "../components/RecipeCards";
 import { ResultContext } from "../contexts/ResultsContext";
 
 export const Search = () => {
   const { recipesResult, youtubeVideoId } = useContext(ResultContext);
 
+  useEffect(() => {
+    document.body.style.cursor = "default";
+  }, []);
   console.log(
     "Receitas chegaram na pagina? ",
     recipesResult,
@@ -11,5 +15,5 @@ export const Search = () => {
     youtubeVideoId
   ); //RETIRAR
 
-  return <h1 style={{ "margin-top": "10rem" }}>Search</h1>;
+  return <RecipeCards />;
 };

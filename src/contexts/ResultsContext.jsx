@@ -20,13 +20,16 @@ export const ResultsProvider = ({ children }) => {
     let inputForRequest = input.split(" ").join("+");
     let recipes = [];
     let savedYoutubeId = "";
+    document.body.style.cursor = "wait";
     axios
       .get(
         `https://api.edamam.com/search?q=${inputForRequest}&to=100&app_id=10531e7c&app_key=267283f1a3321a8d570fac0cf017d03e`
       )
       .then((response) => {
         console.log("Requisição receitas: ", response.data.hits);
-        recipes.push(response.data.hits);
+        response.data.hits.forEach((recipe) => {
+          recipes.push(recipe.recipe);
+        });
         setRecipesResult(recipes);
       })
       .catch((error) => {
