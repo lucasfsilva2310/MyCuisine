@@ -6,7 +6,7 @@ export const HomeContainer = styled.div`
   width: 100%;
 
   display: flex;
-  height: 48rem;
+  height: 53.5rem;
   background-color: var(--background);
 
   @media (max-width: 1080px) {
@@ -19,7 +19,6 @@ export const HomeContainer = styled.div`
 `;
 
 export const IntroductionContainer = styled.div`
-  padding: 2rem;
   width: 50%;
 
   display: flex;
@@ -32,14 +31,14 @@ export const IntroductionContainer = styled.div`
 
   h1 {
     font-size: 4rem;
-    width: 100%;
+    width: 90%;
 
     margin-top: 5rem;
   }
 
   h2 {
     font-size: 2.8rem;
-    width: 100%;
+    width: 90%;
 
     margin-bottom: 5rem;
   }
