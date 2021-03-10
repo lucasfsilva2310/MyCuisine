@@ -1,6 +1,7 @@
+import InfiniteScroll from "react-infinite-scroll-component";
 import styled from "styled-components";
 
-export const SearchContainer = styled.div`
+export const InfiniteScrollCustom = styled(InfiniteScroll)`
   width: 90%;
 
   margin: 8rem auto 0 auto;
@@ -100,8 +101,8 @@ export const Number = styled.span`
   font-weight: 600;
 
   img {
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 1.3rem;
+    height: 1.3rem;
   }
 `;
 

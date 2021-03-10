@@ -16,17 +16,16 @@ export const ResultsProvider = ({ children }) => {
     setValueInput(value);
   }
 
-  function searchAPI(input) {
+  function searchRecipesAPI(input) {
     let inputForRequest = input.split(" ").join("+");
     let recipes = [];
-    let savedYoutubeId = "";
+
     document.body.style.cursor = "wait";
     axios
       .get(
         `https://api.edamam.com/search?q=${inputForRequest}&to=100&app_id=10531e7c&app_key=267283f1a3321a8d570fac0cf017d03e`
       )
       .then((response) => {
-        console.log("Requisição receitas: ", response.data.hits);
         response.data.hits.forEach((recipe) => {
           recipes.push(recipe.recipe);
         });
@@ -37,12 +36,21 @@ export const ResultsProvider = ({ children }) => {
         return;
       });
 
+    setTimeout(() => {
+      history.push("/");
+      history.push("/results");
+    }, 2000);
+  }
+
+  function searchYoutubeIdAPI(input) {
+    let savedYoutubeId = "";
+    let inputForRequest = input.split(" ").join("+");
+
     axios
       .get(
         `https://youtube.googleapis.com/youtube/v3/search?q=${inputForRequest}&type=video&videoDefinition=high&videoEmbeddable=true&maxResults=1&relevanceLanguage=en&key=AIzaSyCSOOzfIafqx5KVilmPA5yKF6vi1GroRvI`
       )
       .then((response) => {
-        console.log("Id do Youtube:", response.data.items[0].id.videoId);
         savedYoutubeId = response.data.items[0].id.videoId;
 
         setYoutubeVideoId(savedYoutubeId);
@@ -52,17 +60,18 @@ export const ResultsProvider = ({ children }) => {
         return;
       });
 
-    setTimeout(() => {
-      history.push("/");
-      history.push("/results");
-    }, 2000);
+    // setTimeout(() => {
+    //   history.push("/");
+    //   history.push("/results");
+    // }, 2000);
   }
 
   return (
     <ResultContext.Provider
       value={{
         handleInputValue,
-        searchAPI,
+        searchRecipesAPI,
+        searchYoutubeIdAPI,
         valueInput,
         setValueInput,
         recipesResult,

@@ -7,7 +7,12 @@ import {
 } from "../styles/SearchInputAndButton.style";
 
 export const SearchInputAndButton = () => {
-  const { valueInput, handleInputValue, searchAPI } = useContext(ResultContext);
+  const {
+    valueInput,
+    handleInputValue,
+    searchRecipesAPI,
+    searchYoutubeIdAPI,
+  } = useContext(ResultContext);
 
   return (
     <SearchContainer>
@@ -17,8 +22,13 @@ export const SearchInputAndButton = () => {
           onChange={handleInputValue}
         />
         <ButtonContainer>
-          <button onClick={() => searchAPI(valueInput)}>
-            <i class="fa fa-search" />
+          <button
+            onClick={() => {
+              searchRecipesAPI(valueInput);
+              searchYoutubeIdAPI(valueInput);
+            }}
+          >
+            <i className="fa fa-search" />
           </button>
         </ButtonContainer>
       </InputAndButtonContainer>

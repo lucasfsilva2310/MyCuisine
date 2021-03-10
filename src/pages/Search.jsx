@@ -8,12 +8,12 @@ export const Search = () => {
   useEffect(() => {
     document.body.style.cursor = "default";
   }, []);
-  console.log(
-    "Receitas chegaram na pagina? ",
-    recipesResult,
-    "\nId Youtube chegou na pagina? ",
-    youtubeVideoId
-  ); //RETIRAR
+  // console.log(
+  //   "Receitas chegaram na pagina? ",
+  //   recipesResult,
+  //   "\nId Youtube chegou na pagina? ",
+  //   youtubeVideoId
+  // ); //RETIRAR
 
   return <RecipeCards />;
 };

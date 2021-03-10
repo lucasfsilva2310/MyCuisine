@@ -43,6 +43,7 @@ export const InputAndButtonContainer = styled.div`
     font-size: 1.3rem;
 
     border: none;
+    outline: none;
   }
   @media (max-width: 427px) {
     width: 80%;
