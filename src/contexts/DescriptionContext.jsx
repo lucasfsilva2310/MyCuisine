@@ -1,7 +1,6 @@
 import axios from "axios";
 import { createContext, useContext, useState } from "react";
 import { useHistory } from "react-router";
-import { FavoritesContext } from "./FavoritesContext";
 import { ResultContext } from "./ResultsContext";
 
 export const DescriptionContext = createContext({});

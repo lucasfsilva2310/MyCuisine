@@ -77,7 +77,7 @@ export const DescriptionCard = ({
               <div>
                 <Category>{recipe.ingredientLines.length} Ingredients</Category>
                 <ul>
-                  {recipe.ingredientLines.map((ingredient, index) => {
+                  {recipe.ingredientLines.map((ingredient) => {
                     return <li>{ingredient}</li>;
                   })}
                 </ul>
@@ -86,7 +86,7 @@ export const DescriptionCard = ({
                 <Category>Preparation</Category>
                 <span>
                   See{" "}
-                  <a href={recipe.url} target="_blank">
+                  <a href={recipe.url} target="_blank" rel="noreferrer">
                     Instructions
                   </a>{" "}
                   on {recipe.source}
@@ -102,11 +102,9 @@ export const DescriptionCard = ({
                 })}
               </div>
               <NutritionData>
-                {nutrientNames.map((name) => {
-                  console.log(recipe.totalNutrients[name]);
-                  console.log(recipe.totalDaily[name]);
+                {nutrientNames.map((name, index) => {
                   return (
-                    <div>
+                    <div key={index}>
                       <h4>{recipe.totalNutrients[name].label}</h4>
                       <span>
                         {recipe.totalNutrients[name]

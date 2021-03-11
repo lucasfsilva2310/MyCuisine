@@ -9,7 +9,6 @@ export const FavoriteRecipes = ({ recipes }) => {
     <FavoritesContainer>
       {recipes.map((recipe, index) => {
         return (
-          // REFATORAR TUDO ISSO
           <Card key={index}>
             {recipe.image ? (
               <img src={recipe.image} alt={recipe.label} />

@@ -6,7 +6,7 @@ export const DescriptionContainer = styled.div`
 `;
 
 export const DescriptionCardContainer = styled.div`
-  width: 90%;
+  width: 60%;
   background-color: #fcfcfc;
   margin: 12rem auto 4.5rem auto;
   padding: 1rem;

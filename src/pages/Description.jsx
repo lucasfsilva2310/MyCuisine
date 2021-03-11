@@ -9,7 +9,6 @@ import { ButtonAnimated } from "../styles/Search.style";
 export const Description = () => {
   useEffect(() => {
     document.body.style.cursor = "default";
-    // document.title = "My Cuisine | Results";
   }, []);
 
   const { embedHtmlYoutubeVid, recipeDescription } = useContext(

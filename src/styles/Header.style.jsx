@@ -14,6 +14,8 @@ export const HeaderContainer = styled.div`
   align-items: center;
 
   background: var(--header);
+
+  z-index: 10;
 `;
 
 export const HamburguerButtonContainer = styled.div`
