@@ -1,8 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { DescriptionContext } from "../contexts/DescriptionContext";
-import { FavoritesContext } from "../contexts/FavoritesContext";
 import { FavoritesDescriptionContext } from "../contexts/FavoritesDescriptionContext";
-import { ResultContext } from "../contexts/ResultsContext";
 import { FavoritesContainer } from "../styles/Favorites.style";
 import {
   ButtonAnimated,
@@ -18,7 +16,10 @@ export const RecipeCards = ({ allRecipes }) => {
     FavoritesDescriptionContext
   );
 
-  const [loadedRecipes, setLoadedRecipes] = useState([]);
+  const [
+    loadRecipesForInfiniteRender,
+    setLoadRecipesForInfiniteRender,
+  ] = useState([]);
 
   useEffect(() => {
     if (allRecipes.length < 14) {
@@ -28,26 +29,32 @@ export const RecipeCards = ({ allRecipes }) => {
     for (let i = 0; i < 15; i++) {
       recipes.push(allRecipes[i]);
     }
-    setLoadedRecipes(recipes);
+    setLoadRecipesForInfiniteRender(recipes);
   }, []);
 
   function getMoreRecipes() {
     if (allRecipes.length < 14) {
       return;
     }
-    for (let i = loadedRecipes.length; i < loadedRecipes.length + 15; i++) {
-      setLoadedRecipes([...loadedRecipes, allRecipes[i]]);
+    for (
+      let i = loadRecipesForInfiniteRender.length;
+      i < loadRecipesForInfiniteRender.length + 15;
+      i++
+    ) {
+      setLoadRecipesForInfiniteRender([
+        ...loadRecipesForInfiniteRender,
+        allRecipes[i],
+      ]);
     }
   }
 
   return (
     <>
-      {loadedRecipes.length < 1 ? (
+      {loadRecipesForInfiniteRender.length < 1 ? (
         allRecipes.length > 0 ? (
           <FavoritesContainer>
             {allRecipes.map((recipe, index) => {
               return (
-                // REFATORAR TUDO ISSO
                 <Card key={index}>
                   {recipe.image ? (
                     <img src={recipe.image} alt={recipe.label} />
@@ -99,7 +106,7 @@ export const RecipeCards = ({ allRecipes }) => {
         )
       ) : (
         <InfiniteScrollCustom
-          dataLength={loadedRecipes.length}
+          dataLength={loadRecipesForInfiniteRender.length}
           next={getMoreRecipes}
           hasMore={true}
           loader={<h4>Loading . .</h4>}
@@ -110,7 +117,7 @@ export const RecipeCards = ({ allRecipes }) => {
             overflow: "none",
           }}
         >
-          {loadedRecipes.map((recipe, index) => {
+          {loadRecipesForInfiniteRender.map((recipe, index) => {
             return (
               <Card key={index}>
                 {recipe.image ? (

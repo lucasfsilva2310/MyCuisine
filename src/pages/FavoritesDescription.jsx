@@ -13,15 +13,11 @@ export const FavoritesDescription = () => {
   const { saveForFavoritesDescription } = useContext(
     FavoritesDescriptionContext
   );
-  const {
-    setWasRecipeAddedToFavorites,
-    wasRecipeAddedToFavorites,
-  } = useContext(FavoritesContext);
+  const { setWasRecipeAddedToFavorites } = useContext(FavoritesContext);
 
   return (
     <DescriptionCard
       recipe={saveForFavoritesDescription}
-      confirmationToLocalStorage={wasRecipeAddedToFavorites}
       button={
         <ButtonAnimated
           onClick={() => {

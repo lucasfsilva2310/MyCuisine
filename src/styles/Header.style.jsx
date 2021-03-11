@@ -19,7 +19,6 @@ export const HeaderContainer = styled.div`
 export const HamburguerButtonContainer = styled.div`
   display: none;
   cursor: pointer;
-
   @media (max-width: 520px) {
     display: inline-block;
   } ;
@@ -63,6 +62,8 @@ export const ThirdBar = styled.div`
 
 export const HiddenMenu = styled.nav`
   position: absolute;
+  border: 1px solid var(--header);
+  border-radius: 2px;
 
   display: ${(props) => (props.isMenuOpen === true ? "block" : "none")};
   top: 6rem;
@@ -71,6 +72,7 @@ export const HiddenMenu = styled.nav`
   height: 10rem;
   width: 30%;
 
+  transition: all 0.2s;
   background-color: var(--background);
 
   ul {
@@ -100,6 +102,100 @@ export const HiddenMenu = styled.nav`
     border-top: 5px solid var(--text);
     border-radius: 2px;
     color: var(--text-hovered);
+  }
+`;
+
+export const LogoContainer = styled.div`
+  width: 25%;
+
+  display: flex;
+  align-items: center;
+
+  img {
+    height: 95%;
+
+    border-radius: 15px;
+
+    margin-left: 1rem;
+  }
+
+  span {
+    font-size: 2.5rem;
+    font-family: Rosario;
+    color: var(--title);
+  }
+
+  @media (max-width: 1040px) {
+    span {
+      font-size: 2.2rem;
+    }
+
+    img {
+      height: 85%;
+    }
+  }
+
+  @media (max-width: 800px) {
+    span {
+      font-size: 2rem;
+    }
+
+    img {
+      height: 75%;
+    }
+  }
+
+  @media (max-width: 742px) {
+    width: 15%;
+    span {
+      display: none;
+    }
+  }
+`;
+
+export const NavigationContainer = styled.nav`
+  width: 25%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  ul {
+    display: flex;
+
+    width: 100%;
+    justify-content: space-around;
+
+    color: var(--text);
+    font-size: 1.6rem;
+  }
+
+  ul > li {
+    display: flex;
+    height: 100%;
+  }
+
+  ul > li > a {
+    padding: 0.5rem;
     transition: all 0.2s;
+  }
+  ul > li > a:hover {
+    border-top: 5px solid var(--text);
+    border-radius: 2px;
+    color: var(--text-hovered);
+    transition: all 0.2s;
+  }
+
+  @media (max-width: 935px) {
+    margin-right: 1rem;
+
+    ul {
+      justify-content: space-between;
+      font-size: 1.3rem;
+    }
+  }
+
+  @media (max-width: 520px) {
+    display: none;
   }
 `;

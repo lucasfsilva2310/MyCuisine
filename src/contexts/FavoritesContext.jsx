@@ -12,17 +12,34 @@ export const FavoritesProvider = ({ children }) => {
     false
   );
 
+  const [recipeAlreadyInFav, setRecipeAlreadyInFav] = useState(false);
+
   function saveIntoLocalStorage() {
     if (localStorage.getItem("recipes") === null) {
       let firstRecipe = [];
       firstRecipe.push(recipeDescription);
       localStorage.setItem("recipes", JSON.stringify(firstRecipe));
+      setWasRecipeAddedToFavorites(true);
+      setTimeout(() => setWasRecipeAddedToFavorites(false), 5000);
       return;
     }
 
     let favoriteRecipes = JSON.parse(localStorage.getItem("recipes"));
+
+    let alreadyInsideFavorites = favoriteRecipes.filter(
+      (recipe) => recipe.label === recipeDescription.label
+    );
+
+    if (alreadyInsideFavorites.length > 0) {
+      setRecipeAlreadyInFav(true);
+      setTimeout(() => setRecipeAlreadyInFav(false), 5000);
+      return;
+    }
+
     favoriteRecipes = [...favoriteRecipes, recipeDescription];
     localStorage.setItem("recipes", JSON.stringify(favoriteRecipes));
+    setWasRecipeAddedToFavorites(true);
+    setTimeout(() => setWasRecipeAddedToFavorites(false), 5000);
   }
 
   function deleteFromLocalStorage(label) {
@@ -46,6 +63,7 @@ export const FavoritesProvider = ({ children }) => {
         wasRecipeAddedToFavorites,
         setWasRecipeAddedToFavorites,
         deleteFromLocalStorage,
+        recipeAlreadyInFav,
       }}
     >
       {children}

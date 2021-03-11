@@ -17,8 +17,8 @@ export const Description = () => {
 
   const {
     saveIntoLocalStorage,
-    setWasRecipeAddedToFavorites,
     wasRecipeAddedToFavorites,
+    recipeAlreadyInFav,
   } = useContext(FavoritesContext);
   return (
     <>
@@ -27,12 +27,11 @@ export const Description = () => {
           youtubeHtml={embedHtmlYoutubeVid}
           recipe={recipeDescription}
           confirmationToLocalStorage={wasRecipeAddedToFavorites}
+          confirmationAlreadyInLocalStorage={recipeAlreadyInFav}
           button={
             <ButtonAnimated
               onClick={() => {
                 saveIntoLocalStorage();
-                setWasRecipeAddedToFavorites(true);
-                setTimeout(() => setWasRecipeAddedToFavorites(false), 5000);
               }}
             >
               Add to Favorites

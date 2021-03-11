@@ -1,26 +1,20 @@
 import { useContext } from "react";
-import { DescriptionContext } from "../contexts/DescriptionContext";
-import {
-  TryAlsoContainer,
-  TryAlsoCardContainer,
-} from "../styles/Description.style";
-import { ButtonAnimated, Number, Type } from "../styles/Search.style";
+import { FavoritesContainer } from "../styles/Favorites.style";
+import { ButtonAnimated, Card, Number, Type } from "../styles/Search.style";
 
-export const TryAlsoCard = () => {
-  const { tryAlso, saveRecipeData, getYoutubeIframe } = useContext(
-    DescriptionContext
-  );
+export const FavoriteRecipes = ({ recipes }) => {
+  const { toSendToFavoritesDescription } = useContext();
 
   return (
-    <TryAlsoContainer>
-      <h1>Try Also:</h1>
-      {tryAlso.map((recipe, index) => {
+    <FavoritesContainer>
+      {recipes.map((recipe, index) => {
         return (
-          <TryAlsoCardContainer key={index}>
-            {recipe.image === undefined ? (
-              <strong>{`Not available :(`}</strong>
-            ) : (
+          // REFATORAR TUDO ISSO
+          <Card key={index}>
+            {recipe.image ? (
               <img src={recipe.image} alt={recipe.label} />
+            ) : (
+              <strong>{`Not available :(`}</strong>
             )}
             <div>
               <header>{recipe.label}</header>
@@ -51,17 +45,16 @@ export const TryAlsoCard = () => {
               <footer>
                 <ButtonAnimated
                   onClick={() => {
-                    saveRecipeData(recipe);
-                    getYoutubeIframe(recipe.label);
+                    toSendToFavoritesDescription(recipe);
                   }}
                 >
                   View Recipe
                 </ButtonAnimated>
               </footer>
             </div>
-          </TryAlsoCardContainer>
+          </Card>
         );
       })}
-    </TryAlsoContainer>
+    </FavoritesContainer>
   );
 };

@@ -1,4 +1,4 @@
-import { LogoContainer } from "../styles/Logo.style";
+import { LogoContainer } from "../styles/Header.style";
 
 export const Logo = () => {
   return (

@@ -15,8 +15,8 @@ export const InfiniteScrollCustom = styled(InfiniteScroll)`
 `;
 
 export const Card = styled.div`
-  width: 22rem;
-  height: 38rem;
+  width: 20rem;
+  height: 34rem;
 
   margin: 2rem;
   background: var(--white);
@@ -31,6 +31,7 @@ export const Card = styled.div`
   color: var(--text);
   line-height: 1.5;
 
+  transition: all 0.4s;
   img {
     width: 100%;
     height: 100%;
@@ -77,6 +78,7 @@ export const Card = styled.div`
     margin-top: 1rem;
     padding: 0.7rem;
     width: 100%;
+
     text-align: center;
     border: none;
     outline: none;
@@ -86,9 +88,19 @@ export const Card = styled.div`
     font-size: 1rem;
     transition: transform 250ms ease, box-shadow 250ms ease;
   }
+
   footer > button:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 34px 0 rgba(255, 79, 135, 0.32);
+  }
+
+  &:hover {
+    transform: scale(1.01);
+    box-shadow: 0 0 88px 0 rgba(0, 0, 0, 0.39);
+  }
+  @media (max-width: 1050px) {
+    width: 18rem;
+    height: 34rem;
   }
 `;
 
@@ -99,6 +111,7 @@ export const ButtonAnimated = styled.button`
   padding: 0.7rem;
   width: 100%;
   text-align: center;
+  font-weight: 600;
   border: none;
   outline: none;
   border-radius: 5px;

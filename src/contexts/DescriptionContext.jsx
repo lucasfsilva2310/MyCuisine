@@ -57,7 +57,7 @@ export const DescriptionProvider = ({ children }) => {
     //   })
     //   .catch((error) => {
     //     console.log("Erro Requisição Youtube: ", error.message);
-    //     setEmbedHtmlYoutubeVid("<h1>Something went wrong :(");
+    setEmbedHtmlYoutubeVid("<h1>Something went wrong :(");
 
     //     return;
     //   });

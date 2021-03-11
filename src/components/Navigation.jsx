@@ -1,4 +1,4 @@
-import { NavigationContainer } from "../styles/Navigation.styles";
+import { NavigationContainer } from "../styles/Header.style";
 import { Link } from "react-router-dom";
 
 export const Navigation = () => {
