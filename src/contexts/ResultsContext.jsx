@@ -4,6 +4,9 @@ import { useHistory } from "react-router";
 
 export const ResultContext = createContext({});
 
+const apiEdamanKey = "267283f1a3321a8d570fac0cf017d03e";
+const apiEdamanId = "10531e7c";
+
 export const ResultsProvider = ({ children }) => {
   const history = useHistory();
 
@@ -22,7 +25,7 @@ export const ResultsProvider = ({ children }) => {
     document.body.style.cursor = "wait";
     axios
       .get(
-        `https://api.edamam.com/search?q=${inputForRequest}&to=100&app_id=10531e7c&app_key=267283f1a3321a8d570fac0cf017d03e`
+        `https://api.edamam.com/search?q=${inputForRequest}&to=100&app_id=${apiEdamanId}&app_key=${apiEdamanKey}`
       )
       .then((response) => {
         if (response.data.hits.length < 1) {

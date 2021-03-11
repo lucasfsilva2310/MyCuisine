@@ -15,6 +15,8 @@ export const DescriptionProvider = ({ children }) => {
 
   const [tryAlso, setTryAlso] = useState([]);
 
+  const apiYoutubeKey = "AIzaSyCSOOzfIafqx5KVilmPA5yKF6vi1GroRvI";
+
   function saveRecipeData(recipe) {
     document.body.style.cursor = "wait";
     setRecipeDescription(recipe);
@@ -34,18 +36,16 @@ export const DescriptionProvider = ({ children }) => {
 
   function getYoutubeIframe(name) {
     let inputForRequest = name.split(" ").join("+");
+    let inputToGetVideoId = `https://youtube.googleapis.com/youtube/v3/search?q=${inputForRequest}+recipe&type=video&videoDefinition=high&videoEmbeddable=true&maxResults=1&relevanceLanguage=en&key=${apiYoutubeKey}`;
 
     axios
-      .get(
-        `https://youtube.googleapis.com/youtube/v3/search?q=${inputForRequest}+recipe&type=video&videoDefinition=high&videoEmbeddable=true&maxResults=1&relevanceLanguage=en&key=AIzaSyCSOOzfIafqx5KVilmPA5yKF6vi1GroRvI`
-      )
+      .get(inputToGetVideoId)
       .then((response) => {
         let savedYoutubeId = response.data.items[0].id.videoId;
+        let inputToGetVideoIframe = `https://www.googleapis.com/youtube/v3/videos?key=${apiYoutubeKey}&id=${savedYoutubeId}&part=player`;
 
         axios
-          .get(
-            `https://www.googleapis.com/youtube/v3/videos?key=AIzaSyCSOOzfIafqx5KVilmPA5yKF6vi1GroRvI&id=${savedYoutubeId}&part=player`
-          )
+          .get(inputToGetVideoIframe)
           .then((response) =>
             setEmbedHtmlYoutubeVid(response.data.items[0].player.embedHtml)
           )
