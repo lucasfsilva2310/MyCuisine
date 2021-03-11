@@ -3,9 +3,11 @@ import { RecipeCards } from "../components/RecipeCards";
 import { ResultContext } from "../contexts/ResultsContext";
 
 export const Search = () => {
+  const { recipesResult } = useContext(ResultContext);
+
   useEffect(() => {
     document.body.style.cursor = "default";
   }, []);
 
-  return <RecipeCards />;
+  return <RecipeCards allRecipes={recipesResult} />;
 };

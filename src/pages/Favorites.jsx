@@ -1,3 +1,15 @@
+import { useEffect } from "react";
+import { RecipeCards } from "../components/RecipeCards";
+
 export const Favorites = () => {
-  return <h1 style={{ "margin-top": "10rem" }}>Favorites</h1>;
+  useEffect(() => {
+    document.body.style.cursor = "default";
+  }, []);
+
+  let favoriteRecipes =
+    JSON.parse(localStorage.getItem("recipes")) !== null
+      ? JSON.parse(localStorage.getItem("recipes"))
+      : [];
+
+  return <RecipeCards allRecipes={favoriteRecipes} />;
 };

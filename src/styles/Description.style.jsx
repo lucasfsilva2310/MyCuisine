@@ -44,6 +44,13 @@ export const Header = styled.header`
     text-align: center;
   }
 
+  div > span {
+    font-size: 1rem;
+    justify-content: center;
+    text-align: center;
+    color: var(--text);
+  }
+
   div > button {
     width: 12rem;
     height: 3rem;
