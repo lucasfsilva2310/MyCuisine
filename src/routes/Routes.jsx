@@ -11,6 +11,7 @@ import { ResultsProvider } from "../contexts/ResultsContext";
 import { DescriptionProvider } from "../contexts/DescriptionContext";
 import { FavoritesProvider } from "../contexts/FavoritesContext";
 import { FavoritesDescriptionProvider } from "../contexts/FavoritesDescriptionContext";
+import { TabTitle } from "../components/TabTitle";
 
 export const Routes = () => {
   return (
@@ -23,21 +24,26 @@ export const Routes = () => {
               <MenuMobile />
               <Switch>
                 <Route path="/" exact>
+                  <TabTitle section={"Home"} />
                   <Home />
                 </Route>
 
                 <Route path="/results" exact>
+                  <TabTitle section={"Recipes"} />
                   <Search />
                 </Route>
 
                 <Route path="/description" exact>
+                  <TabTitle section={"Description"} />
                   <Description />
                 </Route>
 
                 <Route path="/favorites" exact>
+                  <TabTitle section={"Favorites"} />
                   <Favorites />
                 </Route>
                 <Route path="/favorites/description" exact>
+                  <TabTitle section={"Favorites Description"} />
                   <FavoritesDescription />
                 </Route>
               </Switch>
