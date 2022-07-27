@@ -32,6 +32,11 @@ export const RecipeCards = ({ allRecipes }) => {
     setLoadRecipesForInfiniteRender(recipes);
   }, []);
 
+  const handleOnClick = async (recipe) => {
+    saveRecipeData(recipe)
+    await getYoutubeIframe(recipe.label)
+  }
+
   function getMoreRecipes() {
     if (allRecipes.length < 14) {
       return;
@@ -153,10 +158,7 @@ export const RecipeCards = ({ allRecipes }) => {
 
                   <footer>
                     <ButtonAnimated
-                      onClick={() => {
-                        saveRecipeData(recipe);
-                        getYoutubeIframe(recipe.label);
-                      }}
+                      onClick={() => handleOnClick(recipe)}
                     >
                       View Recipe
                     </ButtonAnimated>

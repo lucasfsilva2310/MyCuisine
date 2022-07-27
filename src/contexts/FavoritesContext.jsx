@@ -52,9 +52,8 @@ export const FavoritesProvider = ({ children }) => {
       (recipe) => recipe.label !== label
     );
     localStorage.setItem("recipes", JSON.stringify(removedFromFavorites));
-    setTimeout(() => {
-      history.push("/favorites");
-    }, 1500);
+    
+    history.push("/favorites")
   }
   return (
     <FavoritesContext.Provider

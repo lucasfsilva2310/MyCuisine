@@ -11,6 +11,10 @@ export const SearchInputAndButton = () => {
     ResultContext
   );
 
+  const handleOnClick = async () => {
+    await searchRecipesAPI(valueInput)
+  }
+
   return (
     <SearchContainer>
       <InputAndButtonContainer>
@@ -20,9 +24,7 @@ export const SearchInputAndButton = () => {
         />
         <ButtonContainer>
           <button
-            onClick={() => {
-              searchRecipesAPI(valueInput);
-            }}
+            onClick={handleOnClick}
           >
             <i className="fa fa-search" />
           </button>

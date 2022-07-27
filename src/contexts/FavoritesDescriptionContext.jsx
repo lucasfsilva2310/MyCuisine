@@ -13,7 +13,7 @@ export const FavoritesDescriptionProvider = ({ children }) => {
   function toSendToFavoritesDescription(recipe) {
     document.body.style.cursor = "wait";
     setSaveForFavoritesDescription(recipe);
-    setTimeout(() => history.push("/favorites/description"), 1000);
+    history.push("/favorites/description")
   }
   return (
     <FavoritesDescriptionContext.Provider

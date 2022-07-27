@@ -13,7 +13,6 @@ export const HamburguerButton = () => {
 
   function openMenu() {
     setIsMenuOpen(!isMenuOpen);
-    console.log(isMenuOpen);
   }
 
   return (

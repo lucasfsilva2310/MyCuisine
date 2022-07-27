@@ -1,11 +1,9 @@
 import axios from "axios";
 import { createContext, useState } from "react";
 import { useHistory } from "react-router";
+import { API_EDAMAN_ID, API_EDAMAN_KEY } from "../constants";
 
 export const ResultContext = createContext({});
-
-const apiEdamanKey = "267283f1a3321a8d570fac0cf017d03e";
-const apiEdamanId = "10531e7c";
 
 export const ResultsProvider = ({ children }) => {
   const history = useHistory();
@@ -18,33 +16,30 @@ export const ResultsProvider = ({ children }) => {
     setValueInput(value);
   }
 
-  function searchRecipesAPI(input) {
-    let inputForRequest = input.split(" ").join("+");
+  async function searchRecipesAPI(input) {
+    const inputForRequest = input.split(" ").join("+");
     let recipes = [];
 
-    document.body.style.cursor = "wait";
-    axios
-      .get(
-        `https://api.edamam.com/search?q=${inputForRequest}&to=100&app_id=${apiEdamanId}&app_key=${apiEdamanKey}`
-      )
-      .then((response) => {
-        if (response.data.hits.length < 1) {
-          return;
-        }
-        response.data.hits.forEach((recipe) => {
-          recipes.push(recipe.recipe);
-        });
-        setRecipesResult(recipes);
-      })
-      .catch((error) => {
-        console.log("Erro requisição receitas: ", error);
-        return;
-      });
+    document.body.style.cursor = "wait"; // TODO: Create Loading button component
+    
+    try {
 
-    setTimeout(() => {
-      history.push("/");
+      const result = await axios.get(`https://api.edamam.com/search?q=${inputForRequest}&to=100&app_id=${API_EDAMAN_ID}&app_key=${API_EDAMAN_KEY}`)
+
+      if (result.data?.hits?.length < 1) return
+
+      result.data?.hits.forEach((recipe) => {
+        recipes.push(recipe.recipe)
+      })
+
+      setRecipesResult(recipes)
+
       history.push("/results");
-    }, 2000);
+
+    } catch (error) {
+      console.log("Erro requisição receitas: ", error);
+      return;
+    }
   }
 
   return (
